@@ -4,18 +4,20 @@ local starter = require("mini.starter")
 
 starter.setup({
   header = "Neovim",
+  autoopen = false,
+  evaluate_single = true,
 
-  items = function()
-    local items = {
-      { name = "Open session",   action = function() MiniSessions.select("read") end,   section = "Sessions" },
-      { name = "Save session",   action = function() MiniSessions.select("write") end,  section = "Sessions" },
-      { name = "Delete session", action = function() MiniSessions.select("delete") end, section = "Sessions" },
-    }
+  -- NOTE: items MUST be a table/array. Elements can be items/arrays/functions.
+  items = {
+    -- Works with mini.sessions (loads list + actions)
+    starter.sections.sessions(5, true),
 
-    vim.list_extend(items, starter.sections.recent_files(8, true))
-    vim.list_extend(items, starter.sections.builtin_actions())
-    return items
-  end,
+    starter.sections.recent_files(8, true),
+    starter.sections.builtin_actions(),
+
+    -- Optional: a simple custom action
+    { name = "New file", action = "enew", section = "Builtin actions" },
+  },
 
   content_hooks = {
     starter.gen_hook.adding_bullet("• "),
@@ -23,7 +25,7 @@ starter.setup({
   },
 })
 
--- Show Starter only when launching with no args and no active session.
+-- Open Starter only when launching empty and no session is active
 vim.api.nvim_create_autocmd("VimEnter", {
   callback = function()
     if vim.fn.argc() == 0 and vim.v.this_session == "" then
