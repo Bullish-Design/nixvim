@@ -35,13 +35,7 @@ vim.notify = require("mini.notify").make_notify()
 -- Home screen (start page)
 local starter = require("mini.starter")
 starter.setup({
-  header = table.concat({
-    "   _   _           _           ",
-    "  | \\ | | ___  ___| | ___   _  ",
-    "  |  \\| |/ _ \\/ __| |/ / | | | ",
-    "  | |\\  |  __/ (__|   <| |_| | ",
-    "  |_| \\_|\\___|\\___|_|\\_\\\\__,_| ",
-  }, "\n"),
+  header = "Neovim"
 
   items = {
     starter.sections.recent_files(8, true),
