@@ -1,12 +1,33 @@
+{ inputs }:
 { pkgs, ... }:
+let
+  # mini.nvim pinned via flake input (flake = false)
+  mini-nvim = pkgs.vimUtils.buildVimPlugin {
+    pname = "mini.nvim";
+    # optional: keep in sync with your flake.nix ref/tag
+    version = "pinned";
+    src = inputs.mini-nvim-src;
+  };
+
+  # Your existing plugin list (derivations)
+  pluginsFromRepo = import ./nvim/plugins.nix { inherit pkgs; };
+
+  # Replace nixpkgs' mini-nvim with the pinned one (avoid duplicates)
+  plugins =
+    [ mini-nvim ]
+    ++ builtins.filter
+      (p:
+        let n = (p.pname or p.name or "");
+        in !(builtins.match "mini.*" n != null))
+      pluginsFromRepo;
+in
 {
   programs.neovim = {
     enable = true;
     vimAlias = true;
     viAlias = true;
 
-    # Use your existing plugin list (derivations)
-    plugins = import ./nvim/plugins.nix { inherit pkgs; };
+    plugins = plugins;
   };
 
   # Deploy your whole config tree to ~/.config/nvim
@@ -20,7 +41,7 @@
     ripgrep
     fd
 
-    # LSP servers (pick what you want)
+    # LSP servers
     lua-language-server
     nil
     bash-language-server
