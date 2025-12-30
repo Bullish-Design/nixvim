@@ -1,10 +1,17 @@
 {
-  description = "Custom Neovim config for use with NixOS";
+  description = "Neovim config as a Home Manager module";
 
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-  outputs = { self, nixpkgs, ... }:
-  {
-    homeManagerModules.default = import ./hm-module.nix;
+    # Pin mini.nvim source to a tag (or a commit/branch)
+    mini-nvim-src = {
+      url = "github:nvim-mini/mini.nvim/v0.17.0";
+      flake = false;
+    };
+  };
+
+  outputs = inputs@{ self, ... }: {
+    homeManagerModules.default = import ./hm-module.nix { inherit inputs; };
   };
 }
