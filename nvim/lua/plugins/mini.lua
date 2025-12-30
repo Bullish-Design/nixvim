@@ -3,7 +3,7 @@
 -- Theme: generated colorscheme (no external theme plugin)
 require("mini.hues").setup({
   background = "#0f1115", 
-  foreground = "#cdd6f4",
+  foreground = "#d0d0d0",
   saturation = "medium",
   accent = "azure",
 })
