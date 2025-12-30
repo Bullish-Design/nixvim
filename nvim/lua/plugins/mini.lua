@@ -32,19 +32,4 @@ require("mini.notify").setup()
 vim.notify = require("mini.notify").make_notify()
 
 
--- Home screen (start page)
-local starter = require("mini.starter")
-starter.setup({
-  header = "Neovim",
-
-  items = {
-    starter.sections.recent_files(8, true),
-    starter.sections.builtin_actions(),
-  },
-
-  content_hooks = {
-    starter.gen_hook.adding_bullet("▸ "),
-    starter.gen_hook.aligning("center", "center"),
-  },
-})
 
