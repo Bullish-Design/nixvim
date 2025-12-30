@@ -1,4 +1,4 @@
-local lspconfig = require("lspconfig")
+-- ~/.config/nvim/lua/plugins/lsp.lua
 
 -- Basic LSP UX (builtin)
 vim.diagnostic.config({
@@ -7,7 +7,7 @@ vim.diagnostic.config({
   severity_sort = true,
 })
 
-local on_attach = function(_, bufnr)
+local function on_attach(_, bufnr)
   local map = function(mode, lhs, rhs, desc)
     vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, desc = desc })
   end
@@ -20,8 +20,10 @@ local on_attach = function(_, bufnr)
   map("n", "<leader>f", function() vim.lsp.buf.format({ async = true }) end, "Format")
 end
 
--- Servers (install via Nix: lua-language-server, nil, bash-language-server)
-lspconfig.lua_ls.setup({
+-- Customize server configs (provided by nvim-lspconfig), then enable them.
+-- Neovim 0.11+ API: vim.lsp.config + vim.lsp.enable
+
+vim.lsp.config("lua_ls", {
   on_attach = on_attach,
   settings = {
     Lua = {
@@ -30,6 +32,10 @@ lspconfig.lua_ls.setup({
     },
   },
 })
+vim.lsp.enable("lua_ls")
 
-lspconfig.nil_ls.setup({ on_attach = on_attach })
-lspconfig.bashls.setup({ on_attach = on_attach })
+vim.lsp.config("nil_ls", { on_attach = on_attach })
+vim.lsp.enable("nil_ls")
+
+vim.lsp.config("bashls", { on_attach = on_attach })
+vim.lsp.enable("bashls")
