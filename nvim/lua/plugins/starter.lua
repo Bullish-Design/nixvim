@@ -1,6 +1,7 @@
 -- nvim/lua/plugins/starter.lua
 
 local starter = require("mini.starter")
+local header = require("ui.header")
 
 -- Normalize: some versions return a table, others return a function that returns a table
 local function as_items(x)
@@ -33,7 +34,7 @@ vim.list_extend(items, as_items(starter.sections.recent_files(8, true)))
 vim.list_extend(items, as_items(starter.sections.builtin_actions()))
 
 starter.setup({
-  header = "Neovim",
+  header = header,
   items = items, -- MUST be a table in this version
   content_hooks = {
     starter.gen_hook.adding_bullet("• "),
