@@ -6,7 +6,7 @@
 
     # Pin mini.nvim source to a tag (or a commit/branch)
     mini-nvim-src = {
-      url = "github:nvim-mini/mini.nvim/v0.17.0";
+      url = "tarball+https://github.com/nvim-mini/mini.nvim/archive/refs/tags/v0.17.0.tar.gz";
       flake = false;
     };
   };
