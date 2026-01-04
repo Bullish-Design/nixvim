@@ -38,6 +38,7 @@ in
 
   # Minimal helpers and LSP servers (optional but practical)
   home.packages = with pkgs; [
+    # Search tools
     ripgrep
     fd
 
