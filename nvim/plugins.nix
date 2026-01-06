@@ -22,5 +22,5 @@ in [
   vp.telescope-nvim
   vp.telescope-fzf-native-nvim
   vp.nvim-treesitter
-  # codecompanion-nvim
+  codecompanion-nvim
 ]
