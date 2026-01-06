@@ -42,11 +42,11 @@ starter.setup({
   },
 })
 
--- Only show Starter when launching with no args AND no active session.
-vim.api.nvim_create_autocmd("VimEnter", {
-  callback = function()
-    if vim.fn.argc() == 0 and vim.v.this_session == "" then
-      starter.open()
-    end
-  end,
-})
+-- -- Only show Starter when launching with no args AND no active session.
+-- vim.api.nvim_create_autocmd("VimEnter", {
+--   callback = function()
+--     if vim.fn.argc() == 0 and vim.v.this_session == "" then
+--       starter.open()
+--     end
+--   end,
+-- })
