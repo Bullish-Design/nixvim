@@ -42,6 +42,14 @@ starter.setup({
   },
 })
 
+-- Allow space to work as leader key in starter buffer
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "starter",
+  callback = function()
+    vim.keymap.set("n", "<Space>", "<Space>", { buffer = true, remap = false })
+  end,
+})
+
 -- -- Only show Starter when launching with no args AND no active session.
 -- vim.api.nvim_create_autocmd("VimEnter", {
 --   callback = function()
