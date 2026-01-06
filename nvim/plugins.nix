@@ -10,6 +10,8 @@ let
       rev = "main";
       sha256 = "sha256-L4G1vZJKsLzQpJkbUod3Zrrp4lndplQIVfF4YukmYjE=";
     };
+    # Skip require check as plugin has optional dependencies
+    doCheck = false;
   };
 in [
   # Small, batteries-included Lua plugin suite
