@@ -4,12 +4,12 @@
       vars = {
   version = "1.11.2";
   system = "x86_64-linux";
-  devenv_root = "/home/andrew/Documents/Projects/IDE/nix_neovim_v2";
-  project_input_ref = "path:/home/andrew/Documents/Projects/IDE/nix_neovim_v2";
-  devenv_dotfile = "/home/andrew/Documents/Projects/IDE/nix_neovim_v2/.devenv";
+  devenv_root = "/home/andrew/Documents/Projects/nixvim";
+  project_input_ref = "path:/home/andrew/Documents/Projects/nixvim";
+  devenv_dotfile = "/home/andrew/Documents/Projects/nixvim/.devenv";
   devenv_dotfile_path = ./.devenv;
   devenv_tmpdir = "/run/user/1000";
-  devenv_runtime = "/run/user/1000/devenv-8b107cd";
+  devenv_runtime = "/run/user/1000/devenv-a1c58c6";
   devenv_istesting = false;
   devenv_direnvrc_latest_version = 1;
   container_name = null;
@@ -17,7 +17,7 @@
   ];
   hostname = "framework";
   username = "andrew";
-  git_root = "/home/andrew/Documents/Projects/IDE";
+  git_root = "/home/andrew/Documents/Projects/nixvim";
   secretspec = null;
 };
     in
@@ -41,12 +41,12 @@
       vars = {
   version = "1.11.2";
   system = "x86_64-linux";
-  devenv_root = "/home/andrew/Documents/Projects/IDE/nix_neovim_v2";
-  project_input_ref = "path:/home/andrew/Documents/Projects/IDE/nix_neovim_v2";
-  devenv_dotfile = "/home/andrew/Documents/Projects/IDE/nix_neovim_v2/.devenv";
+  devenv_root = "/home/andrew/Documents/Projects/nixvim";
+  project_input_ref = "path:/home/andrew/Documents/Projects/nixvim";
+  devenv_dotfile = "/home/andrew/Documents/Projects/nixvim/.devenv";
   devenv_dotfile_path = ./.devenv;
   devenv_tmpdir = "/run/user/1000";
-  devenv_runtime = "/run/user/1000/devenv-8b107cd";
+  devenv_runtime = "/run/user/1000/devenv-a1c58c6";
   devenv_istesting = false;
   devenv_direnvrc_latest_version = 1;
   container_name = null;
@@ -54,7 +54,7 @@
   ];
   hostname = "framework";
   username = "andrew";
-  git_root = "/home/andrew/Documents/Projects/IDE";
+  git_root = "/home/andrew/Documents/Projects/nixvim";
   secretspec = null;
 };
       devenv =

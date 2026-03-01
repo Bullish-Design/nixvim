@@ -1,0 +1,9 @@
+/home/andrew/Documents/Projects/nixvim/.devenv/flake.json
+/home/andrew/Documents/Projects/nixvim/.devenv.flake.nix
+/home/andrew/Documents/Projects/nixvim/.env
+/home/andrew/Documents/Projects/nixvim/devenv.local.nix
+/home/andrew/Documents/Projects/nixvim/devenv.lock
+/home/andrew/Documents/Projects/nixvim/devenv.nix
+/home/andrew/Documents/Projects/nixvim/devenv.yaml
+/home/andrew/Documents/Projects/nixvim/nvim/plugins/codecompanion.nix
+/home/andrew/Documents/Projects/nixvim/plugins.nix
