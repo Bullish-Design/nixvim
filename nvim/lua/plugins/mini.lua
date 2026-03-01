@@ -1,35 +1,96 @@
 -- nvim/lua/plugins/mini.lua
 
--- Theme: generated colorscheme (no external theme plugin)
+-- Theme: mini.hues (no external colorscheme needed)
 require("mini.hues").setup({
-  background = "#0f1115", 
+  background = "#0f1115",
   foreground = "#d0d0d0",
   saturation = "medium",
   accent = "azure",
 })
 
--- Core ergonomics
-require("mini.files").setup()
+-- Core editing ergonomics
 require("mini.ai").setup()
-require("mini.comment").setup()
 require("mini.surround").setup()
 require("mini.pairs").setup()
 
--- Visual polish
+-- File navigation
+require("mini.files").setup()
+require("mini.pick").setup()
+vim.ui.select = require("mini.pick").ui_select
+
+-- Statusline and tabline
 require("mini.statusline").setup()
 require("mini.tabline").setup()
+
+-- Visual polish
 require("mini.indentscope").setup({ symbol = "│" })
 require("mini.cursorword").setup()
 
--- Picker (uses rg/fd nicely)
-require("mini.pick").setup()
+-- Sessions
+require("mini.sessions").setup({
+  directory = vim.fn.stdpath("data") .. "/sessions",
+  autoread = false,
+  autowrite = true,
+})
 
--- Completion (small + builtin-friendly)
+-- Starter (dashboard)
+local starter = require("mini.starter")
+local starter_config = require("ui.starter_config")
+
+starter.setup({
+  header = table.concat(require("ui.header"), "\n"),
+  items = starter_config.build_items(),
+  content_hooks = {
+    starter.gen_hook.adding_bullet("  "),
+    starter.gen_hook.indexing("all", { "Sessions", "Actions", "Project" }),
+    starter.gen_hook.aligning("center", "center"),
+  },
+  footer = function()
+    local root = starter_config.find_project_root()
+    if root then
+      return "  " .. vim.fn.fnamemodify(root, ":~")
+    end
+    return ""
+  end,
+})
+
+-- Clue (keymap hints - shows available keys after leader)
+require("mini.clue").setup({
+  triggers = {
+    { mode = "n", keys = "<leader>" },
+    { mode = "v", keys = "<leader>" },
+    { mode = "n", keys = "[" },
+    { mode = "n", keys = "]" },
+    { mode = "n", keys = "g" },
+    { mode = "n", keys = "s" },
+    { mode = "i", keys = "<C-x>" },
+  },
+  clues = {
+    require("mini.clue").gen_clues.builtin_completion(),
+    require("mini.clue").gen_clues.g(),
+    require("mini.clue").gen_clues.z(),
+    require("mini.clue").gen_clues.windows(),
+    require("mini.clue").gen_clues.marks(),
+    require("mini.clue").gen_clues.registers(),
+  },
+})
+
+-- Move (move lines/blocks)
+require("mini.move").setup()
+
+-- Completion (lightweight)
 require("mini.completion").setup()
 
--- Better notifications
+-- Notifications (replaces nvim-notify + fidget + noice notifications)
 require("mini.notify").setup()
 vim.notify = require("mini.notify").make_notify()
 
-
-
+-- Open starter on empty launch
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    -- Only show starter if no file is being edited and no session was auto-loaded
+    if vim.fn.argc() == 0 and vim.v.this_session == "" then
+      require("mini.starter").open()
+    end
+  end,
+})
