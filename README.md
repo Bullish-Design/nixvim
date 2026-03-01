@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # nix_neovim_v2
 
 A minimal, coherent, production-ready Neovim configuration for NixOS and Home Manager. Built on mini.nvim with a "one tool per task" philosophy.
@@ -651,3 +652,30 @@ This configuration is provided as-is. Feel free to fork, modify, and adapt.
 Production-ready. All 31 critical issues have been fixed and verified.
 
 See ARCHITECTURE.md for design documentation.
+||||||| 4ce0011
+# nixvim
+A Neovim configuration for use with NixOS, Home-Manager, and Flakes
+=======
+# nixvim
+A Neovim configuration for use with NixOS, Home-Manager, and Flakes
+
+## Additional Plugins
+
+### Telescope
+Telescope provides fuzzy finding across files, buffers, and more.
+
+Keybindings:
+- `<leader>ff` find files
+- `<leader>fg` live grep
+- `<leader>fb` list buffers
+
+### CodeCompanion
+CodeCompanion adds AI-assisted coding workflows directly in Neovim.
+
+Keybindings:
+- `<leader>cc` open CodeCompanion
+- `<leader>cn` start a new CodeCompanion chat
+- `<leader>cs` toggle CodeCompanion sidebar
+
+Note: set the `ANTHROPIC_API_KEY` environment variable to enable CodeCompanion's Anthropic integration.
+>>>>>>> f723d6dc1a9be27911a97b8d28b7a251c6059483

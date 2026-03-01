@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 -- nvim/lua/plugins/codecompanion.lua
 
 -- Warn if API keys are missing
@@ -64,3 +65,28 @@ map("n", "<leader>ai", "<cmd>CodeCompanionActions<cr>", { desc = "CodeCompanion 
 map("n", "<leader>aa", "<cmd>CodeCompanionChat<cr>", { desc = "CodeCompanion chat" })
 map("v", "<leader>aa", "<cmd>CodeCompanionChat<cr>", { desc = "CodeCompanion chat" })
 map("n", "<leader>at", "<cmd>CodeCompanionToggle<cr>", { desc = "CodeCompanion toggle" })
+||||||| 4ce0011
+=======
+require("codecompanion").setup({
+  adapters = {
+    anthropic = function()
+      return require("codecompanion.adapters").extend("anthropic", {
+        env = {
+          api_key = "ANTHROPIC_API_KEY",
+        },
+      })
+    end,
+  },
+  display = {
+    chat = {
+      window = {
+        layout = "float",
+      },
+    },
+  },
+})
+
+vim.keymap.set({ "n", "v" }, "<leader>cc", "<cmd>CodeCompanionChat<cr>", { desc = "CodeCompanion chat" })
+vim.keymap.set({ "n", "v" }, "<leader>ca", "<cmd>CodeCompanionActions<cr>", { desc = "CodeCompanion actions" })
+vim.keymap.set("n", "<leader>ct", "<cmd>CodeCompanionToggle<cr>", { desc = "CodeCompanion toggle" })
+>>>>>>> f723d6dc1a9be27911a97b8d28b7a251c6059483
