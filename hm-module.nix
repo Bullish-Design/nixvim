@@ -36,15 +36,10 @@ in
   };
 
   home.packages = with pkgs; [
-<<<<<<< HEAD
     # nv2 command alias
     nv2
 
     # CLI tools
-||||||| 4ce0011
-=======
-    # Search tools
->>>>>>> f723d6dc1a9be27911a97b8d28b7a251c6059483
     ripgrep
     fd
 
