@@ -236,5 +236,22 @@ in
     enterShell = ''
       echo "nv2 ready - run 'nv2' to launch Neovim"
     '';
+
+    # devman — the automation plane (CONCEPT.md §5), with the direct task shape
+    # (like nix-desktop): this repository has no Python suite, so the gate is the
+    # flake. `--no-build` type-checks every option without realising a derivation
+    # (the fast one); dropping the flag is the gate. Inside `config`: this module
+    # declares `options` at the top level, so arbitrary attributes must live
+    # here.
+    devman = {
+      enable = true;
+      project = "nixvim";
+      groups = [ "base" ];
+    };
+
+    tasks = {
+      "base:check".exec = "nix flake check --no-build";
+      "base:test".exec = "nix flake check";
+    };
   };
 }
