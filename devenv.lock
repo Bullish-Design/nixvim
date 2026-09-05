@@ -118,12 +118,12 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "path": "/home/andrew/Documents/Projects/shellij",
-        "type": "path"
+        "type": "git",
+        "url": "file:///home/andrew/Documents/Projects/shellij"
       },
       "original": {
-        "path": "/home/andrew/Documents/Projects/shellij",
-        "type": "path"
+        "type": "git",
+        "url": "file:///home/andrew/Documents/Projects/shellij"
       }
     }
   },
