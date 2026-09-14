@@ -243,12 +243,6 @@ in
     # (the fast one); dropping the flag is the gate. Inside `config`: this module
     # declares `options` at the top level, so arbitrary attributes must live
     # here.
-    devman = {
-      enable = true;
-      project = "nixvim";
-      groups = [ "base" ];
-    };
-
     tasks = {
       "base:check".exec = "nix flake check --no-build";
       "base:test".exec = "nix flake check";

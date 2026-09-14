@@ -1,0 +1,7 @@
+base:check
+base:test
+devenv:container:copy
+devenv:enterShell
+devenv:enterTest
+devenv:files
+devenv:files:cleanup
