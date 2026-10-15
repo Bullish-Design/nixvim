@@ -1,4 +1,0 @@
-schema = 1
-project = "nixvim"
-groups = ["base"]
-policy = "stable"
